@@ -1,37 +1,75 @@
 package org.threads;
 
 import java.math.BigInteger;
-import java.util.Random;
 
 public class Main {
 
 	public static void main( String[] args ) {
+
+		for( int i = 1; i < 100; i++ ) {
+			try {
+				new Factorial( (long)i ).getThread().join();
+
+			}
+			catch( InterruptedException e ) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		// Resource res = new Resource();
+		//
+		// Producer pr = new Producer( res, "prod" );
+		// Consumer co = new Consumer( res, "cons" );
+		//
+		// try {
+		// pr.getThread().join();
+		// co.getThread().join();
+		// }
+		// catch( InterruptedException e ) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+
+		// MyThread t = new MyThread( new Resource(), "fuck" );
+		// MyThread t2 = new MyThread( new Resource(), "shit" );
+		//
+		// try {
+		// t.getThread().join();
+		// }
+		// catch( InterruptedException e ) {
+		// // TODO Auto-generated catch block
+		// e.printStackTrace();
+		// }
+
+		System.out.println( "end main" );
+
 		// Thread t = Thread.currentThread();
 
-		// Thread t1 = new Thread( new NT(), "fuck" );
-		// Thread t2 = new Thread( new NT(), "shit" );
-		// Thread t3 = new Thread( new NT(), "ass" );
+		// Thread t1 = new Thread( new MyThread(), "fuck" );
+		// Thread t2 = new Thread( new MyThread(), "shit" );
+		// Thread t3 = new Thread( new MyThread(), "ass" );
 
 		// t1.setDaemon( true );
 		// t1.start();
 		// t.interrupt();
 		// System.out.println( t1.isDaemon() );
 
-		Random rand = new Random();
-
-		int arrSize = 10_000;
-		int[] ar1 = new int[arrSize];
-		// int[] ar2 = new int[arrSize];
-		// int[] ar3 = new int[arrSize];
-
-		for( int i = 0; i < arrSize; i++ ) {
-			ar1[i] = rand.nextInt( 1000 );
-		}
-
-		long t = System.nanoTime();
-		int s = sum( ar1 );
-		System.out.println( System.nanoTime() - t );
-		System.out.println( s );
+		// Random rand = new Random();
+		//
+		// int arrSize = 10_000;
+		// int[] ar1 = new int[arrSize];
+		// // int[] ar2 = new int[arrSize];
+		// // int[] ar3 = new int[arrSize];
+		//
+		// for( int i = 0; i < arrSize; i++ ) {
+		// ar1[i] = rand.nextInt( 1000 );
+		// }
+		//
+		// long t = System.nanoTime();
+		// int s = sum( ar1 );
+		// System.out.println( System.nanoTime() - t );
+		// System.out.println( s );
 
 		// try {
 		//
@@ -48,20 +86,21 @@ public class Main {
 		// e.printStackTrace();
 		// }
 
-		t = System.nanoTime();
-		int f = fuckRec( 10 );
-		System.out.println( f );
-		System.out.println( "fuck rec : " + f + " - "
-				+ ( System.nanoTime() - t ) );
-
-		t = System.nanoTime();
-		f = fuck( 10 );
-		System.out.println( f );
-		System.out.println( "fuck : " + f + " - " + ( System.nanoTime() - t ) );
-
-		System.out.println( "fuck Big : " + fuckBig( 100 ) );
-
-		System.out.println( "main end" );
+		// t = System.nanoTime();
+		// int f = fuckRec( 10 );
+		// System.out.println( f );
+		// System.out.println( "fuck rec : " + f + " - "
+		// + ( System.nanoTime() - t ) );
+		//
+		// t = System.nanoTime();
+		// f = fuck( 10 );
+		// System.out.println( f );
+		// System.out.println( "fuck : " + f + " - " + ( System.nanoTime() - t )
+		// );
+		//
+		// System.out.println( "fuck Big : " + fuckBig( 100 ) );
+		//
+		// System.out.println( "main end" );
 
 	}
 
