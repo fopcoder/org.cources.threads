@@ -6,39 +6,34 @@ public class Resource {
 
 	synchronized public int getNum() {
 		try {
-			if( !this.isSet ) {
+			while( !this.isSet )
 				wait();
-			}
-			else {
-				this.isSet = false;
-				System.out.println( "number " + this.num + " get" );
-				notify();
-			}
 		}
 		catch( InterruptedException e ) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		this.isSet = false;
+		System.out.println( "number " + this.num + " get" );
+		notify();
 		return this.num;
 	}
 
 	synchronized public void setNum( int num ) {
-		if( this.isSet ) {
-			try {
+		try {
+			while( this.isSet )
 				wait();
-			}
-			catch( InterruptedException e ) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
-		else {
-			this.num = num;
-			this.isSet = true;
-			System.out.println( "number " + this.num + " set" );
-			notify();
+		catch( InterruptedException e ) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 
+		this.num = num;
+		this.isSet = true;
+		System.out.println( "number " + this.num + " set" );
+		notify();
 	}
 
 	public boolean isSet() {
